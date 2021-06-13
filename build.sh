@@ -3,7 +3,7 @@ if test -f "$classes/"; then
 fi
 if [[ $1 = "demo" ]]
 then
-    javac -cp lib/CLIPSJNI.jar:lib/jade.jar src/com/demo/Demo.java -d classes/
+    javac -cp lib/CLIPSJNI.jar:lib/jade.jar src/com/demo/Demo.java src/com/clisp/*.java -d classes/
 else
     echo "Pass number of challenge to build"
 fi
