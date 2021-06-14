@@ -54,4 +54,9 @@ public class JadeAgent extends Agent implements JadeAgentInterface
     public String getAgentLocalName() {
         return getLocalName();
     }
+
+    @Override
+    public Object getInputObject() {
+        return null;
+    }
 }

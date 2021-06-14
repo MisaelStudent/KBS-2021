@@ -13,4 +13,6 @@ public interface JadeAgentInterface
     public void onClose();
 
     public String getAgentLocalName();
+
+    public Object getInputObject();
 }

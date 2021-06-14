@@ -8,6 +8,9 @@ fi
 
 if [ $1 = "demo" ]; then
     javac -cp lib/CLIPSJNI.jar:lib/jade.jar $COMPILE_FILE_MIN -d classes/
+elif [ $1 = "four" ]; then
+    COMPILE_FOUR_SRC="src/com/handson/four/*.java"
+    javac -cp lib/CLIPSJNI.jar:lib/jade.jar $COMPILE_FILE_MIN $COMPILE_FOUR_SRC -d classes/
 elif [ $1 = "five" ]; then
     COMPILE_FIVE_SRC="src/com/handson/five/*.java"
     javac -cp lib/CLIPSJNI.jar:lib/jade.jar $COMPILE_FILE_MIN $COMPILE_FIVE_SRC -d classes/
