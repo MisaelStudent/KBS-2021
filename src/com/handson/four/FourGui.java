@@ -37,6 +37,7 @@ public class FourGui extends SimpleGui
                public void actionPerformed(ActionEvent event)  {
                    ResourceManager rm = (ResourceManager)agent.getInputObject();
                    rm.appendToFile("four", "facts", facts_txt.getText());
+                   facts_txt.setText("");
                }
             });
 
@@ -44,6 +45,7 @@ public class FourGui extends SimpleGui
                public void actionPerformed(ActionEvent event)  {
                    ResourceManager rm = (ResourceManager)agent.getInputObject();
                    rm.appendToFile("four", "rules", rules_txt.getText());
+                   rules_txt.setText("");
                }
             });
 
