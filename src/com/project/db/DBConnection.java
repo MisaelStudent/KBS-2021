@@ -2,6 +2,9 @@ package com.project.db;
 
 import java.io.File;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -41,6 +44,63 @@ public class DBConnection
                 }
             }
             return false;
+        }
+    }
+
+    public class ObjectContextColumn {
+        public static final int STATE_NEW_VALUE = 1;
+        public static final int STATE_OLD_VALUE = 2;
+        public static final int TYPE_STRING = 1;
+        public static final int TYPE_INT    = 2;
+        public static final int TYPE_PRICE  = 3;
+
+        public Object  value;
+        public int     state;
+        public int     type;
+    }
+
+    public class ObjectContext {
+        private String table;
+        private ArrayList<String> columns;
+        private HashMap<String, ObjectContextColumn> values;
+
+        public ObjectContext(String table) {
+            this.table = table;
+            values = new HashMap<String, ObjectContextColumn>();
+        }
+
+        public boolean updateAttribute(String column, Object value) {
+            ObjectContextColumn obj = new ObjectContextColumn();
+            obj.value = value;
+            obj.state = ObjectContextColumn.STATE_NEW_VALUE;
+            if (value instanceof String) {
+                obj.type = ObjectContextColumn.TYPE_STRING;
+            } else if (value instanceof Integer) {
+                obj.type = ObjectContextColumn.TYPE_INT;
+            } else if (value instanceof Float) { // TODO: Replace with real another data type...
+                obj.type = ObjectContextColumn.TYPE_PRICE;
+            } else {
+                return false;
+            }
+            values.put(column, obj);
+            return true;
+        }
+
+        public boolean setSearchAttribute(String column, Object value) {
+            ObjectContextColumn obj = new ObjectContextColumn();
+            obj.value = value;
+            obj.state = ObjectContextColumn.STATE_OLD_VALUE;
+            if (value instanceof String) {
+                obj.type = ObjectContextColumn.TYPE_STRING;
+            } else if (value instanceof Integer) {
+                obj.type = ObjectContextColumn.TYPE_INT;
+            } else if (value instanceof Float) { // TODO: Replace with real another data type...
+                obj.type = ObjectContextColumn.TYPE_PRICE;
+            } else {
+                return false;
+            }
+            values.put(column, obj);
+            return true;
         }
     }
 
