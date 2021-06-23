@@ -14,6 +14,9 @@ elif [ $1 = "four" ]; then
 elif [ $1 = "five" ]; then
     COMPILE_FIVE_SRC="src/com/handson/five/*.java"
     javac -cp lib/CLIPSJNI.jar:lib/jade.jar $COMPILE_FILE_MIN $COMPILE_FIVE_SRC -d classes/
+elif [ $1 = "project" ]; then
+    COMPILE_PROD_SRC="src/com/project/db/*.java"
+    javac -cp lib/CLIPSJNI.jar:lib/jade.jar:lib/sqlite-jdbc-3.34.0.jar $COMPILE_FILE_MIN $COMPILE_PROD_SRC -d classes/
 else
     echo "Pass number of challenge to build"
 fi
