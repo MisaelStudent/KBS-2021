@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnection
@@ -47,6 +48,13 @@ public class DBConnection
         }
     }
 
+    public PreparedStatement createStmt(String query) {
+        try {
+            return conn.prepareStatement(query);
+        } catch (SQLException e) {
+            return null;
+        }
+    } 
 
     public static void main(String args[]) {
         DBConnection dbc = new DBConnection("db.sqlite", "sqlite");
