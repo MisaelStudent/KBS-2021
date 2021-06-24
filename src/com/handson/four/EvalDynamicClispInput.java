@@ -1,7 +1,5 @@
 package com.handson.four;
 
-import jade.core.behaviours.OneShotBehaviour;
-
 import com.jade.JadeAgent;
 import com.clisp.ResourceManager;
 import com.clisp.ClispEnv;

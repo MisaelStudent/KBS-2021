@@ -1,7 +1,6 @@
 package com.clisp;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 // TODO: We really don't want all files open all the time, a File manager will

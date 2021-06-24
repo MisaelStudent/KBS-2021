@@ -29,6 +29,10 @@ public class ResourceFile
         return name;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public String getAbsolutePath() {
         return file.getAbsolutePath();
     }
