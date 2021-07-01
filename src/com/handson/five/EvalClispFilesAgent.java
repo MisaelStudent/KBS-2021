@@ -1,7 +1,5 @@
 package com.handson.five;
 
-import jade.core.behaviours.OneShotBehaviour;
-
 import com.jade.JadeAgent;
 import com.jade.AskBehaviour;
 import com.jade.TellBehaviour;

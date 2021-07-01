@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnection
@@ -47,6 +48,7 @@ public class DBConnection
         }
     }
 
+<<<<<<< HEAD
     public class ObjectContextColumn {
         public static final int STATE_NEW_VALUE = 1;
         public static final int STATE_OLD_VALUE = 2;
@@ -102,8 +104,15 @@ public class DBConnection
             }
             values.put(column, obj);
             return true;
+=======
+    public PreparedStatement createStmt(String query) {
+        try {
+            return conn.prepareStatement(query);
+        } catch (SQLException e) {
+            return null;
+>>>>>>> 406241acc1e12609e94729cc9c24748bb11291d5
         }
-    }
+    } 
 
     public static void main(String args[]) {
         DBConnection dbc = new DBConnection("db.sqlite", "sqlite");
