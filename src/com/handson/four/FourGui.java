@@ -36,7 +36,13 @@ public class FourGui extends SimpleGui
         add_facts.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent event)  {
                    ResourceManager rm = (ResourceManager)agent.getInputObject();
-                   rm.appendToFile("four", "facts", facts_txt.getText());
+                   String text = facts_txt.getText().trim();
+                   if (text.isEmpty()) {
+                       System.out.println("empty fact, skipping....");
+                       return;
+                   }
+                   System.out.println(String.format("%s added to buffer facts", text));
+                   rm.appendToFile("four", "facts", text+"\n");
                    facts_txt.setText("");
                }
             });
@@ -44,7 +50,13 @@ public class FourGui extends SimpleGui
         add_rules.addActionListener(new ActionListener() {
                public void actionPerformed(ActionEvent event)  {
                    ResourceManager rm = (ResourceManager)agent.getInputObject();
-                   rm.appendToFile("four", "rules", rules_txt.getText());
+                   String text = rules_txt.getText().trim();
+                   if (text.isEmpty()) {
+                       System.out.println("empty rule, skipping....");
+                       return;
+                   }
+                    System.out.println(String.format("%s added to buffer rules", text));
+                   rm.appendToFile("four", "rules", text+"\n");
                    rules_txt.setText("");
                }
             });

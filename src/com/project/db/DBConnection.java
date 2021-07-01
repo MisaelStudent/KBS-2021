@@ -61,6 +61,7 @@ public class DBConnection
 
     public class ObjectContext {
         private String table;
+        // TODO: Catch columns on here to make iteration easy.
         private ArrayList<String> columns;
         private HashMap<String, ObjectContextColumn> values;
 

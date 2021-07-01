@@ -19,7 +19,11 @@ public class ClispEnv {
         env.eval("(clear)");
         ResourceNode node = rm.getNode(key);
         for (ResourceFile rf : node.getResourceFiles()) {
-            env.load(rf.getAbsolutePath());
+            // env.load(rf.getAbsolutePath());
+            String content = rf.getContent();
+            if (content != null) {
+                env.eval(content);
+            }
         }
         env.run();
     }

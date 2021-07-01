@@ -1,5 +1,8 @@
 package com.clisp;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -33,6 +36,14 @@ public class ResourceFile
         return file.getAbsolutePath();
     }
 
+    public String getContent() {
+        try {
+            return Files.readString(Path.of(file.getPath()));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public boolean write(String content) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -46,7 +57,7 @@ public class ResourceFile
 
     public boolean append(String content) {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.append(content);
             writer.close();
             return true;
